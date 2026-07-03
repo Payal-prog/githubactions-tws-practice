@@ -1,1 +1,16 @@
+# Goal - Whenever someone changes the python code, the linter will check if the syntanx, format, identation is correct or not.
+name: AUTO_LINTER
+on:
+  push:
+    paths: "*.py"                                             # The workflow will run only when a Python file (.py) is changed and pushed to the repository.
+                                                              # 🟢 Triggers: You modify main.py or src/utils/helpers.py and run git push.
+                                                              # 🔴 Does NOT Trigger: You modify README.md or styles.css and run git push.
+jobs: 
+  code:
+    runs-on: ubuntu-latest                                    
+    steps: 
+      - name: Checkout/Clone the code                         # Clones your current repository into the runner (ubuntu-latest)
+        uses: actions/checkout@v7                             # Selects an action to run as part of a step in your job. An action is a reusable unit of code.
 
+      - name: Install Python linter
+        run: pip install ruff                                 # Install the Python linter (Ruff) via pip 
