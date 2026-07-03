@@ -11,18 +11,21 @@ jobs:
         run: echo "Clone code"
 
   build:
+    needs: code                                # Use needs to identify any jobs that must complete successfully before this job will run. It can be a string or array of strings.
     runs-on: ubuntu-latest
     steps:
       - name: Build using Docker
         run: echo "Building using docker"
 
   test:
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - name: Run test cases
         run: echo "Run test cases"
 
   deploy:
+    needs: [build, test]
     runs-on: ubuntu-latest
     steps:
       - name: Deploy code
