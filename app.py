@@ -1,5 +1,6 @@
 # File copied from TWS flask-app-ecs rep
 # Testing linter ruff on this file 
+# Flask app
 from flask import Flask, render_template
 app = Flask(__name__)
 
